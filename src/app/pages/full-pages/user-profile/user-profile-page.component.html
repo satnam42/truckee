@@ -1,0 +1,217 @@
+<section class="page-user-profile">
+  <div class="row match-height">
+    <div class="col-12">
+      <div class="card">
+        <div class="user-profile-images">
+          <!-- user timeline image -->
+          <!--<img src="assets/img/banner/profile-image.jpg" class="img-fluid rounded-top user-timeline-image" alt="User Timeline Image">-->
+		  <p class="img-fluid rounded-top user-timeline-image"></p>
+          <!-- user profile image -->
+          <img src="assets/img/portrait/small/avatar-s-20.png" class="user-profile-image rounded" alt="User Profile Image" height="140" width="140">
+        </div>
+        <div class="user-profile-text">
+          <h4 class="profile-text-color mb-0">Martina Ash</h4>
+          <small>Devloper</small>
+        </div>
+        <!-- user profile body start -->
+        <div class="card-content">
+          <div class="card-body">
+            <div class="user-profile-buttons d-flex justify-content-center justify-content-sm-start">
+              <span class="badge badge-light mb-1 mr-2">Edit Profile</span>
+            </div>
+          </div>
+          <!-- user profile body ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Profile posts and info starts -->
+  <div class="profile-info-posts">
+    <!-- 1st column starts -->
+  <section id="horizontal-form-layout">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Driver Profile</h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <form class="needs-validation" #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit(userForm)">
+              <div class="row">
+                <div class="col-md-6 col-12">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-1">Profile Type</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control square" id="horizontal-form-1" name="pro-type" value="Driver" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-2">Driver Name</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control square" id="horizontal-form-2" name="driver-name" [(ngModel)]="model.dname" #dname="ngModel"
+                  [ngClass]="{ 'is-invalid': userForm.submitted && dname.invalid, 'is-valid': userForm.submitted &&  !dname.invalid }" required>
+				  <div *ngIf="userForm.submitted && (dname.invalid || dname.errors?.required)" class="invalid-tooltip">Please provide a valid name.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+			  <div class="row mb-md-3">
+			  <div class="col-md-6 col-12">
+                <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="horizontal-form-2">Licence Class</label>
+				 <div class="col-md-9">
+                <select id="form-action-5" name="lcls" class="form-control" [(ngModel)]="model.lcls" #lcls="ngModel"
+                  [ngClass]="{ 'is-invalid': userForm.submitted && lcls.invalid, 'is-valid': userForm.submitted &&  !lcls.invalid }" required>
+				 <option value="">Select Licence Class</option>
+				  <option *ngFor="let item of licenceClassList" [ngValue]="item.name">
+				  {{ item.name }}
+				</option>
+                </select>
+				<div *ngIf="userForm.submitted && (lcls.invalid || lcls.errors?.required)" class="invalid-tooltip">Please select a valid licence class.</div>
+              </div>
+			  </div>
+			  </div>
+                <div class="col-md-6 col-12">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-4">Licence Number</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control square" id="horizontal-form-4" name="lnum" [(ngModel)]="model.lnum" #lnum="ngModel"
+                  [ngClass]="{ 'is-invalid': userForm.submitted && lnum.invalid, 'is-valid': userForm.submitted &&  !lnum.invalid }" required>
+					  <div *ngIf="userForm.submitted && (lnum.invalid || lnum.errors?.required)" class="invalid-tooltip">Please provide a valid licence number.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+			   <div class="row">
+			  <div class="col-md-6 col-12">
+                <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="horizontal-form-2">Country</label>
+				 <div class="col-md-9">
+                <input id="form-action-5" name="country" class="form-control" value="United States" [(ngModel)]="model.country" #country="ngModel"
+                  [ngClass]="{ 'is-invalid': userForm.submitted && country.invalid, 'is-valid': userForm.submitted &&  !country.invalid }" required readonly>
+				<div *ngIf="userForm.submitted && (country.invalid || country.errors?.required)" class="invalid-tooltip">Please enter a valid country .</div>
+              </div>
+			  </div>
+			  </div>
+			  <div class="col-md-6 col-12">
+                <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="horizontal-form-2">State</label>
+				 <div class="col-md-9">
+                <select id="form-action-5" name="state" class="form-control" [(ngModel)]="model.state " #state="ngModel"
+                  [ngClass]="{ 'is-invalid': userForm.submitted && state.invalid, 'is-valid': userForm.submitted &&  !state.invalid }" required>
+				 <option value="">Select State</option>
+				<option value="AL">Alabama</option>
+				<option value="AK">Alaska</option>
+				<option value="AZ">Arizona</option>
+				<option value="AR">Arkansas</option>
+				<option value="CA">California</option>
+				<option value="CO">Colorado</option>
+				<option value="CT">Connecticut</option>
+				<option value="DE">Delaware</option>
+				<option value="DC">District Of Columbia</option>
+				<option value="FL">Florida</option>
+				<option value="GA">Georgia</option>
+				<option value="HI">Hawaii</option>
+				<option value="ID">Idaho</option>
+				<option value="IL">Illinois</option>
+				<option value="IN">Indiana</option>
+				<option value="IA">Iowa</option>
+				<option value="KS">Kansas</option>
+				<option value="KY">Kentucky</option>
+				<option value="LA">Louisiana</option>
+				<option value="ME">Maine</option>
+				<option value="MD">Maryland</option>
+				<option value="MA">Massachusetts</option>
+				<option value="MI">Michigan</option>
+				<option value="MN">Minnesota</option>
+				<option value="MS">Mississippi</option>
+				<option value="MO">Missouri</option>
+				<option value="MT">Montana</option>
+				<option value="NE">Nebraska</option>
+				<option value="NV">Nevada</option>
+				<option value="NH">New Hampshire</option>
+				<option value="NJ">New Jersey</option>
+				<option value="NM">New Mexico</option>
+				<option value="NY">New York</option>
+				<option value="NC">North Carolina</option>
+				<option value="ND">North Dakota</option>
+				<option value="OH">Ohio</option>
+				<option value="OK">Oklahoma</option>
+				<option value="OR">Oregon</option>
+				<option value="PA">Pennsylvania</option>
+				<option value="RI">Rhode Island</option>
+				<option value="SC">South Carolina</option>
+				<option value="SD">South Dakota</option>
+				<option value="TN">Tennessee</option>
+				<option value="TX">Texas</option>
+				<option value="UT">Utah</option>
+				<option value="VT">Vermont</option>
+				<option value="VA">Virginia</option>
+				<option value="WA">Washington</option>
+				<option value="WV">West Virginia</option>
+				<option value="WI">Wisconsin</option>
+				<option value="WY">Wyoming</option>
+                </select>
+				<div *ngIf="userForm.submitted && (state.invalid || state.errors?.required)" class="invalid-tooltip">Please select a valid State .</div>
+              </div>
+			  </div>
+			  </div>
+			  </div>
+			  <div class="row">
+                <div class="col-md-6 col-12">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-1">Upload Photo</label>
+                    <div class="col-md-9">
+                      <input type="file" class="form-control square" enctype="multipart/form-data" accept=".jpg,.pdf" id="horizontal-form-1" name="pro-pic" value="Driver">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-2">Upload Licence</label>
+                    <div class="col-md-9">
+                      <input type="file" class="form-control square" enctype="multipart/form-data" accept=".jpg,.pdf" id="horizontal-form-2" name="driver-name">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-12">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-5">Email</label>
+                    <div class="col-md-9">
+                      <input type="email" class="form-control square" id="horizontal-form-5" name="e-mail">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-7">Contact Number</label>
+                    <div class="col-md-9">
+                      <input type="number" class="form-control square" id="horizontal-form-7" name="phone-number">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-12">
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="horizontal-form-9">Any Additional Notes</label>
+                    <div class="col-md-9">
+                      <textarea id="horizontal-form-9" rows="6" class="form-control square" name="comment3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Save</button>
+              <button type="reset" class="btn btn-secondary"><i class="ft-x mr-1"></i>Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Horizontal Form Layout ends -->
+  </div>
+  <!-- Profile posts and info ends -->
+</section>

@@ -1,0 +1,375 @@
+<!--Navs Starts-->
+<section id="navs">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="content-header">Assigned Loads</div>
+    </div>
+  </div>
+  <div class="row text-left">
+    <!--Basic navs Starts-->
+    <div class="col-md-12 col-lg-12">
+      <div class="card">
+        <!--<div class="card-header">
+          <h4 class="card-title">
+            Basic navs</h4>
+        </div>-->
+        <div class="card-content">
+          <div class="card-body">
+            <ul ngbNav #basicnav="ngbNav" [(activeId)]="active" class="nav-tabs">
+              <li [ngbNavItem]="1">
+                <a ngbNavLink> Upcoming </a>
+                <ng-template ngbNavContent>
+                 <!-- Multi Purpose Datatables -->
+<section id="ngx-datatable-multi-purpose modals">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+
+            <!-- ngx-datatable-multi-purpose -->
+            <fieldset class="form-group">
+              <label for="ngx-filter-ref">Search:
+                <input id="ngx-MultiPurposeFilter-ref" class="form-control form-control-sm d-inline-block width-200"
+                  type="text" placeholder="Filter the Load ID column..." (keyup)="MultiPurposeFilterUpdate($event)" />
+              </label>
+            </fieldset>
+            <ngx-datatable #table class="bootstrap core-bootstrap header-height-50" [columns]="columns"
+              [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
+              [rows]="multiPurposeRows" [selectionType]="SelectionType.checkbox" [scrollbarH]="true">
+              <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false">
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                  let-selectFn="selectFn">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                  </div>
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                  let-onCheckboxChangeFn="onCheckboxChangeFn">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Load ID" prop="load_id" [width]="100">
+                <ng-template let-name="value" ngx-datatable-cell-template>
+                  <div class="d-flex align-items-center">
+                    <div class="cell-line-height">
+                      <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Load Information" prop="type" [width]="100">
+			  <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+			    <span class="badge badge-pill bg-light-primary mb-1 mr-2">Pickup Date & Time : {{row.dateTime | date:'MM/dd/yyyy HH:MM'}}</span><br>
+				<span class="badge badge-pill bg-light-secondary mb-1 mr-2">Pickup Address : {{row.address}}</span><br>
+				<span class="badge badge-pill bg-light-success mb-1 mr-2">Delivery Date & Time : {{row.dateTime1 | date:'MM/dd/yyyy HH:MM'}}</span><br>
+				<span class="badge badge-pill bg-light-info mb-1 mr-2">Delivery Address : {{row.address1}}</span><br>
+				<span class="badge badge-pill bg-light-warning mb-1">Load : {{row.loads}}</span><br>
+			  </ng-template>
+			  </ngx-datatable-column>
+              <ngx-datatable-column name="Status" prop="status" [width]="30">
+                <ng-template let-status="value" ngx-datatable-cell-template>
+                 <div class="badge badge-pill"
+                    [ngClass]="{'bg-primary': status == '1', 'bg-success':status == '2', 'bg-danger':status == '3' , 'bg-warning':status == '4' , 'bg-info':status == '5'}">
+                    {{ status == 1 ? "Associated" : (status == 2 ? "Associated" : (status == 3 ? "Associated" : (status == 4 ? "Associated" : status == 5 ? "Associated" : "Associated"))) }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" [width]="70">
+                <ng-template ngx-datatable-cell-template>
+                  <button type="button" class="btn gradient-ibiza-sunset" (click)="open(content)">View Load</button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+            <!--/ ngx-datatable-multi-purpose -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Multi Purpose Datatables -->
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="2">
+                <a ngbNavLink> In Transit </a>
+                <ng-template ngbNavContent>
+                  <section id="ngx-datatable-multi-purpose modals">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+
+            <!-- ngx-datatable-multi-purpose -->
+            <fieldset class="form-group">
+              <label for="ngx-filter-ref">Search:
+                <input id="ngx-MultiPurposeFilter-ref" class="form-control form-control-sm d-inline-block width-200"
+                  type="text" placeholder="Filter the Load ID column..." (keyup)="TMultiPurposeFilterUpdate($event)" />
+              </label>
+            </fieldset>
+            <ngx-datatable #table class="bootstrap core-bootstrap header-height-50" [columns]="columns"
+              [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
+              [rows]="tmultiPurposeRows" [selectionType]="SelectionType.checkbox" [scrollbarH]="true">
+              <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false">
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                  let-selectFn="selectFn">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                  </div>
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                  let-onCheckboxChangeFn="onCheckboxChangeFn">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Load ID" prop="load_id" [width]="100">
+                <ng-template let-name="value" ngx-datatable-cell-template>
+                  <div class="d-flex align-items-center">
+                    <div class="cell-line-height">
+                      <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Load Information" prop="type" [width]="100">
+			  <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+			    <span class="badge badge-pill bg-light-primary mb-1 mr-2">Pickup Date & Time : {{row.dateTime | date:'MM/dd/yyyy HH:MM'}}</span><br>
+				<span class="badge badge-pill bg-light-secondary mb-1 mr-2">Pickup Address : {{row.address}}</span><br>
+				<span class="badge badge-pill bg-light-success mb-1 mr-2">Delivery Date & Time : {{row.dateTime1 | date:'MM/dd/yyyy HH:MM'}}</span><br>
+				<span class="badge badge-pill bg-light-info mb-1 mr-2">Delivery Address : {{row.address1}}</span><br>
+				<span class="badge badge-pill bg-light-warning mb-1">Load : {{row.loads}}</span><br>
+			  </ng-template>
+			  </ngx-datatable-column>
+              <ngx-datatable-column name="Status" prop="status" [width]="30">
+                <ng-template let-status="value" ngx-datatable-cell-template>
+                  <div class="badge badge-pill"
+                    [ngClass]="{'bg-primary': status == '1', 'bg-success':status == '2', 'bg-danger':status == '3' , 'bg-warning':status == '4' , 'bg-info':status == '5'}">
+                    {{ status == 1 ? "Associated" : (status == 2 ? "Associated" : (status == 3 ? "Associated" : (status == 4 ? "Associated" : status == 5 ? "Associated" : "Associated"))) }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" [width]="70">
+                <ng-template ngx-datatable-cell-template>
+                  <button type="button" class="btn gradient-ibiza-sunset" (click)="open(content)">View Load</button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+            <!--/ ngx-datatable-multi-purpose -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="3">
+                <a ngbNavLink> History </a>
+                <ng-template ngbNavContent>
+                  <section id="ngx-datatable-multi-purpose modals">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+
+            <!-- ngx-datatable-multi-purpose -->
+            <fieldset class="form-group">
+              <label for="ngx-filter-ref">Search:
+                <input id="ngx-MultiPurposeFilter-ref" class="form-control form-control-sm d-inline-block width-200"
+                  type="text" placeholder="Filter the Load ID column..." (keyup)="HMultiPurposeFilterUpdate($event)" />
+              </label>
+            </fieldset>
+            <ngx-datatable #table class="bootstrap core-bootstrap header-height-50" [columns]="columns"
+              [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
+              [rows]="hmultiPurposeRows" [selectionType]="SelectionType.checkbox" [scrollbarH]="true">
+              <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false">
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                  let-selectFn="selectFn">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                  </div>
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                  let-onCheckboxChangeFn="onCheckboxChangeFn">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Load ID" prop="load_id" [width]="100">
+                <ng-template let-name="value" ngx-datatable-cell-template>
+                  <div class="d-flex align-items-center">
+                    <div class="cell-line-height">
+                      <p class="font-medium-1 line-height-1 mb-0">{{ name }}</p>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Load Information" prop="type" [width]="100">
+			  <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+			    <span class="badge badge-pill bg-light-primary mb-1 mr-2">Pickup Date & Time : {{row.dateTime | date:'MM/dd/yyyy HH:MM'}}</span><br>
+				<span class="badge badge-pill bg-light-secondary mb-1 mr-2">Pickup Address : {{row.address}}</span><br>
+				<span class="badge badge-pill bg-light-success mb-1 mr-2">Delivery Date & Time : {{row.dateTime1 | date:'MM/dd/yyyy HH:MM'}}</span><br>
+				<span class="badge badge-pill bg-light-info mb-1 mr-2">Delivery Address : {{row.address1}}</span><br>
+				<span class="badge badge-pill bg-light-warning mb-1">Load : {{row.loads}}</span><br>
+			  </ng-template>
+			  </ngx-datatable-column>
+              <ngx-datatable-column name="Status" prop="status" [width]="30">
+                <ng-template let-status="value" ngx-datatable-cell-template>
+                  <div class="badge badge-pill"
+                    [ngClass]="{'bg-primary': status == '1', 'bg-success':status == '2', 'bg-danger':status == '3' , 'bg-warning':status == '4' , 'bg-info':status == '5'}">
+                    {{ status == 1 ? "Associated" : (status == 2 ? "Associated" : (status == 3 ? "Associated" : (status == 4 ? "Associated" : status == 5 ? "Associated" : "Associated"))) }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" [width]="70">
+                <ng-template ngx-datatable-cell-template>
+                  <button type="button" class="btn gradient-ibiza-sunset" (click)="open(content)">View Load</button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+            <!--/ ngx-datatable-multi-purpose -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+                </ng-template>
+              </li>
+            </ul>
+
+            <div [ngbNavOutlet]="basicnav" class="mt-2"></div>
+
+            <!--<pre>Active: {{ active }}</pre>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Basic navs Ends-->
+  </div>
+</section>
+<!--Navs Starts-->
+	<section id="loads-pop">
+	<ng-template #content let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title">Load Details</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+			  <form class="needs-validation" #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit(userForm)">
+              <div class="modal-body"> 
+							<div class="row match-height">
+							<div class="col-lg-6 col-md-6 col-sm-12">
+							  <div class="card">
+								<div class="card-content">
+								  <div class="card-body">
+									<ul class="list-group">
+									  <li class="list-group-item">
+										<span class="badge bg-primary float-right">45687891615454</span>Load ID
+									  </li>
+									  <li class="list-group-item">
+										<span class="badge bg-info float-right">Driver</span>Assign To
+									  </li>
+									  <li class="list-group-item">
+										<span class="badge bg-warning float-right">$0.00</span>Advance Paid (If any)
+									  </li>
+									  <li class="list-group-item">
+										<span class="badge bg-success float-right">Test</span>Associated Drivers
+									  </li>
+									  <li class="list-group-item">
+										<span class="badge bg-success float-right">Test</span>Payment Type
+									  </li>
+									</ul>
+								  </div>
+								</div>
+							  </div>
+							</div>
+							
+							<div class="col-lg-6 col-md-6 col-sm-12">
+								  <div class="card">
+									<div class="card-content">
+									  <div class="card-body">
+										<ul class="list-group">
+										  <li class="list-group-item">
+											<span class="badge bg-primary float-right">$100</span>Rate
+										  </li>
+										  <li class="list-group-item">
+											<span class="badge bg-info float-right">Test test</span>Primary Equipment
+										  </li>
+										  <li class="list-group-item">
+											<span class="badge bg-warning float-right">Test test</span>Secondary Equipment
+										  </li>
+										  <li class="list-group-item">
+											<span class="badge bg-success float-right">Test</span>Load (in Lbs)
+										  </li>
+										</ul>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							</div>
+							<!--Light table starts-->
+<section id="light">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Stoppage Information</h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table m-0">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Load Information</th>
+					<th>Date & Time</th>
+					<th>Address</th>
+					<th>Country</th>
+					<th>State</th>
+					<th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Test test</th>
+					<td>14/05/2021 11:05:02</td>
+					<td>Test test</td>
+					<td>USA</td>
+					<td>Texas</td>
+					<td>Test</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Light table Ends-->
+							
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="c('Close click')">Close</button>
+				<button class="btn gradient-pomegranate big-shadow" type="submit">Mark In-Transit</button>
+              </div>
+			  </form>
+            </ng-template>
+</section>
+

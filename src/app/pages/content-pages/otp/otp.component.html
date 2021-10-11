@@ -1,0 +1,62 @@
+<!--Login Page Starts-->
+<section id="login">
+    <div class="row auth-height full-height-vh m-0">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="card overflow-hidden">
+                <div class="card-content">
+                    <div class="  px-4 py-3">
+                        <p>Please enter the one time password send to your emaiL</p>
+                        <h4 class="mb-2 card-title">OTP</h4>
+                        <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <input type="text" formControlName="otp" class="form-control" placeholder="otp"
+                                    [ngClass]="{ 'is-invalid': otpFormSubmitted && lf.otp.invalid, 'is-valid': otpFormSubmitted && !lf.otp.invalid }"
+                                    required>
+                                <div *ngIf="otpFormSubmitted && (lf.otp.invalid || lf.otp.errors?.required)"
+                                    class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i>
+                                    Please enter a password.
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between flex-sm-row flex-column">
+                                <button class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->
+
+<!-- <div class="form" [formGroup]="otpVerifyForm">
+    <div class="form-group email_text">
+        <h2>Please enter the one time password send to your email</h2>
+    </div>
+    <div class="form-group">
+        <label>One Time Password</label>
+        <div class="input_outer">
+            <input type="password" class="form-control" placeholder="Password" maxlength="4"
+                [formControl]="otpVerifyForm.controls['otp']" [(ngModel)]="credentials.otp">
+            <mat-icon *ngIf="otpVerifyForm.valid" class="field-icon"><svg width="12" height="10" viewBox="0 0 12 10"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M4.59502 9.13831C4.48047 9.25353 4.32419 9.31782 4.16185 9.31782C3.99951 9.31782 3.84322 9.25353 3.72868 9.13831L0.269259 5.67834C-0.089753 5.31932 -0.089753 4.73716 0.269259 4.37882L0.702429 3.94554C1.06155 3.58653 1.64304 3.58653 2.00205 3.94554L4.16185 6.10545L9.99792 0.269259C10.357 -0.089753 10.9391 -0.089753 11.2975 0.269259L11.7307 0.702542C12.0897 1.06155 12.0897 1.6436 11.7307 2.00205L4.59502 9.13831Z"
+                        fill="#27AE60" />
+                </svg></mat-icon>
+            <small *ngIf=" otpVerifyForm.controls['otp'].hasError('minLength') && otpVerifyForm.controls['otp'].touched"
+                class="form-error-msg">FOUR DIGIT NO. REQUIRED</small>
+            <small *ngIf=" otpVerifyForm.controls['otp'].hasError('maxLength') && otpVerifyForm.controls['otp'].touched"
+                class="form-error-msg">FOUR DIGIT REQUIRED</small>
+            <small *ngIf=" otpVerifyForm.controls['otp'].hasError('required') && otpVerifyForm.controls['otp'].touched"
+                class="form-error-msg">OTP IS REQUIRED</small>
+
+        </div>
+    </div>
+    <div class="reset_btn">
+        <button class="ResetBtn" [disabled]="otpVerifyForm.invalid" (click)="otpVerify()">Verify</button>
+    </div>
+    <div class="go_back_page">
+        <p> Go back to <a [routerLink]="['/login']">SIGN IN</a> </p>
+    </div>
+</div> -->

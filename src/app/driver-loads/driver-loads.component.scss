@@ -1,0 +1,14 @@
+.close {
+  font-size: 1.4rem;
+  opacity: 0.1;
+  transition: opacity 0.3s;
+}
+.nav-link:hover > .close {
+  opacity: 0.8;
+}
+
+@media (min-width: 576px){
+.modal-dialog {
+    max-width: 1000px;
+	}
+	}
